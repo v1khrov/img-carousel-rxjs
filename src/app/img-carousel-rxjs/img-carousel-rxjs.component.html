@@ -1,52 +1,52 @@
 <!-- Component container -->
 <ng-container *ngIf="options">
-    <ng-container *ngTemplateOutlet="imgCarousel; context: {
-        
+  <ng-container *ngTemplateOutlet="imgCarousel; context: {
+      show: show$ | async,
+      height: 500 + 'px'
     }">
 
-    </ng-container>
+  </ng-container>
 </ng-container>
 
 <!-- Carousel -->
 <ng-template #imgCarousel let-height="height">
-    <div class="carousel-container" [ngStyle]="{ height: height }">
-        <ng-container *ngFor="let slide of options.slides; let index = index">
-            <ng-container *ngTemplateOutlet="imgCarouselSlide; context: {
+  <div class="carousel-container" [ngStyle]="{ height: height }">
+    <ng-container *ngFor="let slide of options.slides; let index = index">
+      <ng-container *ngTemplateOutlet="imgCarouselSlide; context: {
                 slide: slide, index: index
             }"></ng-container>
-        </ng-container>
-        <!-- Indicators -->
-        <div class="carousel-ind-container" *ngIf="options.indicators">
-            <span class="indicator" *ngFor="let slide of options.slides; let index = index"
-                [ngClass]="{'indicator-active': options.activeSlide === index}">
-            </span>
-        </div>
-        <!-- Previous slide button -->
-        <button class="btn-carousel btn-prev">
-            <i class="fas fa-arrow-circle-left icon-carousel icon-prev"></i>
-        </button>
-        <!-- Next slide button -->
-        <button class="btn-carousel btn-next">
-            <i class="fas fa-arrow-circle-right icon-carousel icon-next"></i>
-        </button>
+    </ng-container>
+    <!-- Indicators -->
+    <div class="carousel-ind-container" *ngIf="options.indicators">
+      <span class="indicator" *ngFor="let slide of options.slides; let index = index" (click)="changeSlide$.next(index)"
+        [ngClass]="{'indicator-active': options.activeSlide === index}">
+      </span>
     </div>
+    <!-- Previous slide button -->
+    <button class="btn-carousel btn-prev" (click)="changeSlide$.next(options.activeSlide - 1)">
+      <i class="fas fa-arrow-circle-left icon-carousel icon-prev"></i>
+    </button>
+    <!-- Next slide button -->
+    <button class="btn-carousel btn-next" (click)="changeSlide$.next(options.activeSlide + 1)">
+      <i class="fas fa-arrow-circle-right icon-carousel icon-next"></i>
+    </button>
+  </div>
 </ng-template>
 
 <!-- Slide of carousel -->
 <ng-template #imgCarouselSlide let-slide="slide" let-index="index">
-    <div class="carousel-slide" 
-        [class.carousel-slide-active]="options.activeSlide === index"
-        [class.carousel-slide-hidden]="options.hideSlide === index">
-        <div class="carousel-slide-img" [ngStyle]="{ backgroundImage: 'url(' + slide.imageSrc + ')' }">
-            <div class="carousel-slide-content">
-                <div class="carousel-slide-title">
-                    {{ slide.imageTitle }}
-                </div>
-                <div class="carousel-slide-description">
-                    {{ slide.imageDescription }}
-                </div>
-            </div>            
+  <div class="carousel-slide slide-fade" [class.carousel-slide-active]="options.activeSlide === index"
+    [class.carousel-slide-hidden]="options.hideSlide === index">
+    <div class="carousel-slide-img" [ngStyle]="{ backgroundImage: 'url(' + slide.imageSrc + ')' }">
+      <div class="carousel-slide-content">
+        <div class="carousel-slide-title">
+          {{ slide.imageTitle }}
         </div>
-
+        <div class="carousel-slide-description">
+          {{ slide.imageDescription }}
+        </div>
+      </div>
     </div>
+
+  </div>
 </ng-template>

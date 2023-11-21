@@ -22,10 +22,10 @@
 
 .carousel-slide.carousel-slide-hidden {
   z-index: 1;
-  display: none;
+  display: none; 
 }
 
-.carousel-slide-image {
+.carousel-slide-img {
   display: block;
   position: absolute;
   height: 100%;
@@ -116,6 +116,7 @@
   background: 0 0;
   border: 0;
   cursor: pointer;
+  z-index: 3;
 }
 
 .btn-prev {

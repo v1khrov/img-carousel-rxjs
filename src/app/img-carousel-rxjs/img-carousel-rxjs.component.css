@@ -1,0 +1,149 @@
+.carousel-container {
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  box-shadow: 0 4px 16px #000;
+}
+
+.carousel-slide {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  height: 100%;
+  width: 100%; 
+
+}
+
+.carousel-slide.carousel-slide-active {
+  z-index: 2;
+  display: block;
+}
+
+.carousel-slide.carousel-slide-hidden {
+  z-index: 1;
+  display: none;
+}
+
+.carousel-slide-image {
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.carousel-slide-title {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 1;
+  position: absolute;
+  top: 25%
+}
+
+.carousel-slide-description {
+  color: #fff;
+  font-size: 0.5rem;
+  z-index: 1;
+  position: absolute;
+  top: 40%;
+}
+
+.carousel-slide-content {
+  height: 100%;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.slide-fade {
+  animation: fade 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Indicators */
+.carousel-ind-container {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  z-index: 9;
+}
+
+.indicator {
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  transition: opacity 0.6s ease;
+  opacity: 0.5;
+}
+
+.indicator-active, .indicator:hover {
+  opacity: 1;
+}
+
+.btn-carousel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  background: 0 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-prev {
+  left: 0;
+}
+
+.btn-next {
+  right: 0;
+}
+
+.icon-carousel {
+  color: #fff;
+  opacity: 0.5;
+  transition: all 0.15s ease;
+}
+
+.icon-carousel:hover {  
+  opacity: 0.9;
+}
+
+.icon-carousel:active {
+  opacity: 0.5;
+}
+
+.icon-prev {
+  font-size: 2rem;
+}
+
+.icon-next {
+  font-size: 2rem;
+}

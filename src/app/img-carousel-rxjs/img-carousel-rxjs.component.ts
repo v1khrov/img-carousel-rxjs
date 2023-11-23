@@ -36,7 +36,8 @@ export class ImgCarouselRxjsComponent implements OnInit {
           this.options.hideSlide = this.options.activeSlide;
           this.options.activeSlide = index;
         }
-        else this.changeSlide$.next(0);
+        else if(index >= this.options.slides.length) 
+          this.changeSlide$.next(0);
         return interval(this.options.interval).pipe(
           tap(() => {
             if(!window.document.hidden) {
